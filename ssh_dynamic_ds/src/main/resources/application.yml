@@ -1,0 +1,45 @@
+server:
+  port: 8083
+
+spring:
+  ### 多数据源
+  datasource:
+    dynamic:
+      primary: master
+      strict: false
+      datasource:
+        dz:
+          url: jdbc:mysql://127.0.01:3306/test1?characterEncoding=UTF-8&useServerPrepStmts=false&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          hikari:
+            connection-test-query: SELECT 1
+        slave:
+          url: jdbc:mysql://127.0.01:3307/test2?characterEncoding=UTF-8&useServerPrepStmts=false&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          hikari:
+            connection-test-query: SELECT 1
+#mybaits相关配置
+mybatis-plus:
+  mapper-locations: classpath*:com/onging/case/mapper/xml/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    lazy-loading-enabled: true
+    multiple-result-sets-enabled: true
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: assign_id
+      table-underline: true
+    enable-sql-runner: true
+  configuration-properties:
+    prefix:
+    #如果数据库为postgresql，则需要配置为blobType: BINARY
+    blobType: BLOB
+    #如果数据库为oracle或mssql，则需要配置为boolValue: 1
+    boolValue: true
