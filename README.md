@@ -8,4 +8,4 @@
 
 如果代码方面存在任何疑问和问题，可以直接WX联系我
 
-![wx_qrcode.JPG](https://public.ismine.cn/images/wx_qrcode.JPG)
+<img src="https://public.ismine.cn/images/wx_qrcode.gif" width="256" height="256"/>
